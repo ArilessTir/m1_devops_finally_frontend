@@ -29,7 +29,7 @@ jobs:
       - run:
           command: |
             mkdir -p /tmp/server
-            cp core.* /tmp/server
+            cp ./dist /tmp/server
           when: on_fail
       - store_artifacts:
           path: /tmp/server
