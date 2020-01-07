@@ -31,8 +31,8 @@ jobs:
             mkdir -p /tmp/server
             cp core.* /tmp/server
           when: on_fail
-            - store_artifacts:
-                path: /tmp/server
+      - store_artifacts:
+          path: /tmp/server
       - save_cache:
           paths:
             - node_modules
