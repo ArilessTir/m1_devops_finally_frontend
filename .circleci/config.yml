@@ -32,9 +32,9 @@ jobs:
             cp -r ./dist /tmp/server
 
       - persist_to_workspace:
-          root: ~/
+          root: /tmp
           paths:
-            - tmp/server
+            - server
 
       - save_cache:
           paths:
