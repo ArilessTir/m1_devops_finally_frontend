@@ -28,14 +28,14 @@ jobs:
       - run: yarn run build
       - run:
           command: |
-            cp ./dist /tmp/server 
+            cp -r ./dist /tmp/server-doc 
           when: on_fail
       - store_artifacts:
           path: /tmp/server
       - persist_to_workspace:
           root: /tmp
           paths:
-            - server
+            - server-doc
 
 
       - save_cache:
