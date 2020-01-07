@@ -29,10 +29,16 @@ jobs:
       - run:
           command: |
             mkdir -p /tmp/server
-            cp ./dist /tmp/server
+            cp ./dist /tmp/server 
           when: on_fail
       - store_artifacts:
           path: /tmp/server
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - server
+
+
       - save_cache:
           paths:
             - node_modules
