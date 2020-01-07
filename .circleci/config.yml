@@ -44,7 +44,7 @@ jobs:
   deploy:
     docker:
         - image: circleci/node:dubnium-browsers
-    working_directory: ~/deploy-doc-server
+    working_directory: ~/repo
     steps:
         - attach_workspace:
             at: /tmp
