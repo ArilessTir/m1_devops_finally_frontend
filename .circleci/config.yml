@@ -29,12 +29,12 @@ jobs:
       - run:
           name : Persist
           command: |
-            cp -r ./dist /tmp/server
+            cp -r ./dist /tmp/server-front
 
       - persist_to_workspace:
           root: /tmp
           paths:
-            - server
+            - server-front
 
       - save_cache:
           paths:
@@ -51,7 +51,7 @@ jobs:
         - run:
             name: Deploy app
             command: |
-                npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir /tmp/server-doc --prod
+                npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir /tmp/server-front --prod
 
 
 
