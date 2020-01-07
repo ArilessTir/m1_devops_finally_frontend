@@ -28,7 +28,6 @@ jobs:
       - run: yarn run build
       - run:
           command: |
-            mkdir -p /tmp/server
             cp ./dist /tmp/server 
           when: on_fail
       - store_artifacts:
