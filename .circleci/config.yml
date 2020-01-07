@@ -27,16 +27,14 @@ jobs:
             - dependencies-
       - run: yarn run build
       - run:
+          name : Persist
           command: |
-            cp -r dist/ /tmp/server-doc 
-          when: on_fail
-      - store_artifacts:
-          path: /tmp/server
-      - persist_to_workspace:
-          root: /tmp
-          paths:
-            - server-doc
+            cp -r ./dist /tmp/server-doc
 
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - /tmp/server-doc
 
       - save_cache:
           paths:
