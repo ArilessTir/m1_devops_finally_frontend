@@ -1,0 +1,24 @@
+workflows:
+    version: 2
+    Install:
+        jobs:
+        - install
+
+version: 2
+jobs:
+  install:
+    working_directory: ~/repo 
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          - v1-dependencies-{{ checksum "package.json" }}
+      - run: 
+        name: Install Dependencies
+        command: yarn install
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
