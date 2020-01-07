@@ -31,6 +31,20 @@ jobs:
             - node_modules
           key: dependencies-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}    
 
+  deploy:
+    docker:
+        - image: circleci/node:dubnium-browsers
+    working_directory: ~/deploy-doc-server
+    steps:
+        - attach_workspace:
+            at: /tmp
+        - run:
+            name: Deploy app
+            command: |
+            npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir /tmp/server-doc --prod
+
+
+
 workflows:
     version: 2
     front-install:
@@ -39,3 +53,6 @@ workflows:
         - build:
             requires:
                 - install
+        - deploy:
+            requires:
+                - build
