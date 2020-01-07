@@ -26,10 +26,18 @@ jobs:
             - dependencies-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
             - dependencies-
       - run: yarn run build
+
+       - run:
+          command: |
+            mkdir -p /tmp/server
+            cp core.* /tmp/server
+          when: on_fail
+            - store_artifacts:
+                path: /tmp/server
       - save_cache:
           paths:
             - node_modules
-          key: dependencies-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}    
+          key: dependencies-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
 
   deploy:
     docker:
