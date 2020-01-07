@@ -28,7 +28,7 @@ jobs:
       - run: yarn run build
       - run:
           command: |
-            cp -r ./dist /tmp/server-doc 
+            cp -r dist/ /tmp/server-doc 
           when: on_fail
       - store_artifacts:
           path: /tmp/server
