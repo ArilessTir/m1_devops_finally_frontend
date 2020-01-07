@@ -34,7 +34,7 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - /tmp/server-doc
+            - tmp/server-doc
 
       - save_cache:
           paths:
