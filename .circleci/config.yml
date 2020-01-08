@@ -72,6 +72,7 @@ jobs:
                   docker push $DOCKER_HUB_USER_ID/my-python-app:$CIRCLE_BUILD_NUM
                   docker push $DOCKER_HUB_USER_ID/my-python-app:latest
 
+
 workflows:
     version: 2
     front-install:
