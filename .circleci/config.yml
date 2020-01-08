@@ -86,4 +86,4 @@ workflows:
                 - build
         - dockerB&P:
             requires:
-                - deploy
+                - build
